@@ -1,0 +1,1 @@
+{"name":"Two Trits","slug":"two-trits","blurb":"nine patterns","seal":"cb595a8580317a1d9547f70a44baf7bcd635e28c805f8d8b793429fb8d80a603","rule":"sha256(name|slug|blurb)","write":"if-missing"}

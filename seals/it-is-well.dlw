@@ -1,0 +1,1 @@
+{"name":"It Is Well","slug":"it-is-well","blurb":"three words in the gloss","seal":"a7fd26c8fc86c2e0c40622134031b764c260be04637c9b4ccefb5470d30bab19","rule":"sha256(name|slug|blurb)","write":"if-missing"}

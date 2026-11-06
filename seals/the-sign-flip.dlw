@@ -1,0 +1,1 @@
+{"name":"The Sign Flip","slug":"the-sign-flip","blurb":"negate by turning every trit","seal":"d0a05889eb755d37d52e4c6294ead3abe2838d6a77315ef79fb127fc37c58b3a","rule":"sha256(name|slug|blurb)","write":"if-missing"}

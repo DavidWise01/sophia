@@ -1,0 +1,1 @@
+{"name":"Twenty-One Consonants","slug":"twenty-one-consonants","blurb":"the rest of the sound","seal":"e46017323f10c26711c023582d2edfb292bbf76e50d501c8833f635960983cb6","rule":"sha256(name|slug|blurb)","write":"if-missing"}

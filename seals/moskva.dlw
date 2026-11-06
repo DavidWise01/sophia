@@ -1,0 +1,1 @@
+{"name":"Moskva","slug":"moskva","blurb":"six letters of the city","seal":"439149a8905bf73336e17e47c5e6224fd54ed44c207ef192450e46ea6a3fd31d","rule":"sha256(name|slug|blurb)","write":"if-missing"}

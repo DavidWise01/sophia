@@ -1,0 +1,1 @@
+{"name":"Four Seasons","slug":"four-seasons","blurb":"the year in quarters","seal":"cc3427c7fe4a171555b967388b816c7fc2e0d08505428ac2974c649d09f6b4ee","rule":"sha256(name|slug|blurb)","write":"if-missing"}

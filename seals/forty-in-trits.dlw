@@ -1,0 +1,1 @@
+{"name":"Forty in Trits","slug":"forty-in-trits","blurb":"both ends of the four-trit range","seal":"c82efc974fb7ddd1bb02112bc4150cd694280e1b888959717d05f502d1b6f1c9","rule":"sha256(name|slug|blurb)","write":"if-missing"}

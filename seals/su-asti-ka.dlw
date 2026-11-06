@@ -1,0 +1,1 @@
+{"name":"Su, Asti, Ka","slug":"su-asti-ka","blurb":"the three pieces of the word","seal":"8271bb8572a9279be09a51cefd0b7318a2206e2683e564c0a5f6b07d8d25bcab","rule":"sha256(name|slug|blurb)","write":"if-missing"}

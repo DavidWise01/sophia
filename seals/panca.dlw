@@ -1,0 +1,1 @@
+{"name":"Panca","slug":"panca","blurb":"five, in this spelling","seal":"2481624e8a8f724564203e31b55589255df99803abf8e98e989f97a21d1cabd4","rule":"sha256(name|slug|blurb)","write":"if-missing"}

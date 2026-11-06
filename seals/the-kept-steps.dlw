@@ -1,0 +1,1 @@
+{"name":"The Kept Steps","slug":"the-kept-steps","blurb":"odd steps only","seal":"c64a2179584e487404e7c75af26e02cf94a9c0e0d8cccd5af9ea749144735ec8","rule":"sha256(name|slug|blurb)","write":"if-missing"}

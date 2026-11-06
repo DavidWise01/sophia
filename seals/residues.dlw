@@ -1,0 +1,1 @@
+{"name":"Three Residues","slug":"residues","blurb":"zero, one, and two","seal":"4f714526af6a226fd9275392e9ef2d06ebd48df168e90cc35bfde0e3929fb5fa","rule":"sha256(name|slug|blurb)","write":"if-missing"}

@@ -1,0 +1,1 @@
+{"name":"The Dual Pair","slug":"the-dual-pair","blurb":"cube and octahedron","seal":"4635905db82695f2de2dc7d308089ac24a47d6ff6abce60b69c616c12d114078","rule":"sha256(name|slug|blurb)","write":"if-missing"}

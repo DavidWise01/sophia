@@ -1,0 +1,1 @@
+{"name":"The Thirty-Three","slug":"cyrillic-thirty-three","blurb":"the alphabet still counted","seal":"80347e950e5d0bbbf1aec07bd40c43e16d3f9b9848052e5c8f6878f15795b341","rule":"sha256(name|slug|blurb)","write":"if-missing"}

@@ -1,0 +1,1 @@
+{"name":"Nine to the Second","slug":"nine-to-the-second","blurb":"already waiting above","seal":"039a534ed61c654b1e6f2d6cdd4cfff34efbedeb495bf3e2685ef637a3142b0d","rule":"sha256(name|slug|blurb)","write":"if-missing"}

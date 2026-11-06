@@ -1,0 +1,1 @@
+{"name":"The Hexagon Sum","slug":"the-hexagon-sum","blurb":"six corners","seal":"bc9341e36589841c96971dad9e3798cce3ddc995ce3a8113fc8148c7a3d8bd60","rule":"sha256(name|slug|blurb)","write":"if-missing"}

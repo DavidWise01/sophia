@@ -1,0 +1,1 @@
+{"name":"Catur","slug":"catur","blurb":"four, and the word is longer","seal":"78b20ed5fb2fb69db25a2a8e4dc6d330e0ae27ba429f2320fdab583c4c22a7e7","rule":"sha256(name|slug|blurb)","write":"if-missing"}

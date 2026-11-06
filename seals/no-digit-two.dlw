@@ -1,0 +1,1 @@
+{"name":"No Digit Two","slug":"no-digit-two","blurb":"balanced form never writes 2","seal":"0d971ba485558f17b505aaf15e8354fe045c549e89f5073e266906669ff10dbe","rule":"sha256(name|slug|blurb)","write":"if-missing"}

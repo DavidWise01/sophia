@@ -1,0 +1,1 @@
+{"name":"Three Strings","slug":"three-strings","blurb":"the balalaika","seal":"56bff51946f4d67b933cf3b89fed5f993b96cc3ebab097aeee0d915792577149","rule":"sha256(name|slug|blurb)","write":"if-missing"}

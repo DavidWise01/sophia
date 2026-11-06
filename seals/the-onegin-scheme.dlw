@@ -1,0 +1,1 @@
+{"name":"The Onegin Scheme","slug":"the-onegin-scheme","blurb":"fourteen seats, no verse copied","seal":"695c73379c146ec876ba383b150c95826d0e4802980a49396f225d1f7219cac7","rule":"sha256(name|slug|blurb)","write":"if-missing"}

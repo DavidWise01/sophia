@@ -1,0 +1,1 @@
+{"name":"The Tetractys","slug":"the-tetractys","blurb":"the first four integers","seal":"a9ee4bb7d5da989e770df6c91c774dec32953160228fb9a967755af466d80c87","rule":"sha256(name|slug|blurb)","write":"if-missing"}

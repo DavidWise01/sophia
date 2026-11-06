@@ -1,0 +1,1 @@
+{"name":"Place Values","slug":"place-values","blurb":"five positive powers","seal":"03e39fbaa0082d66c9d5ece4b48fc57c2cb2d68141ef07628d7ddf192d6d6af1","rule":"sha256(name|slug|blurb)","write":"if-missing"}

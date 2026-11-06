@@ -1,0 +1,1 @@
+{"name":"Twelve Months","slug":"twelve-months","blurb":"the civil year","seal":"6c38cd8c1eb4e4e72668b4a18f2c1c76c80a435bd4d5b1f05aed6d6008048169","rule":"sha256(name|slug|blurb)","write":"if-missing"}

@@ -1,0 +1,1 @@
+{"name":"The Thirteen Days","slug":"the-thirteen-days","blurb":"the 1918 gap","seal":"5da67754dd52bcb6bb7caf352db206e9f5a08239e1f8be723bc2efa6def4c593","rule":"sha256(name|slug|blurb)","write":"if-missing"}

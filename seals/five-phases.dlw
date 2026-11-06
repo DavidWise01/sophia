@@ -1,0 +1,1 @@
+{"name":"Five Phases","slug":"five-phases","blurb":"the palette's own count","seal":"4f4c834738b977a938d1464ed7fef7e973d22e6eb4d79234c5d23d15442b35c8","rule":"sha256(name|slug|blurb)","write":"if-missing"}

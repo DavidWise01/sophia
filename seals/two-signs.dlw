@@ -1,0 +1,1 @@
+{"name":"The Two Signs","slug":"two-signs","blurb":"hard and soft","seal":"eacac15ad0a0b01c1c6e3b4a92f1d51b80964809eec0f47f7cab3ad0cbaecc0b","rule":"sha256(name|slug|blurb)","write":"if-missing"}

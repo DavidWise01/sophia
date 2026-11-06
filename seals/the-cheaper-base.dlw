@@ -1,0 +1,1 @@
+{"name":"The Cheaper Base","slug":"the-cheaper-base","blurb":"three against two","seal":"c8739da452dcb9139dcc714c8dbb67409ce7d2890e34de97fc4bf6c5eb52deb7","rule":"sha256(name|slug|blurb)","write":"if-missing"}

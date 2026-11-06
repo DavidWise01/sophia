@@ -1,0 +1,1 @@
+{"name":"The Heptagon Sum","slug":"the-heptagon-sum","blurb":"seven corners","seal":"1f7e9d888ea146f2bd9ac18c32022681226449a250fea4bcaceec565aacec311","rule":"sha256(name|slug|blurb)","write":"if-missing"}

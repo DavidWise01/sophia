@@ -1,0 +1,1 @@
+{"name":"Seventy-Eight","slug":"seventy-eight","blurb":"a deck's arithmetic","seal":"3357820fb668a156646c87c573466117f1e073d8283b8b58834155c929ccdbc7","rule":"sha256(name|slug|blurb)","write":"if-missing"}

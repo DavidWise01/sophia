@@ -1,0 +1,1 @@
+{"name":"Four Right Angles","slug":"square-angles","blurb":"the square itself","seal":"1a8934df0284cc313be7d0d29cbe289bbc311a896ae79e18b059d268162e9247","rule":"sha256(name|slug|blurb)","write":"if-missing"}

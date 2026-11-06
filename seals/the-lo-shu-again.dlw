@@ -1,0 +1,1 @@
+{"name":"Fifteen, Again","slug":"the-lo-shu-again","blurb":"the same square, the constant alone","seal":"6395307313fdb4935b508ddccaf9414e7428311d83d4ece7167b71db4fdbf4d1","rule":"sha256(name|slug|blurb)","write":"if-missing"}

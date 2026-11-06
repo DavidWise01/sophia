@@ -1,0 +1,1 @@
+{"name":"All Marks Up","slug":"all-marks-up","blurb":"five plus-ones","seal":"002bb38ca7be92820a71be80ee22b8102217ad0577d2ab3ac562f07251d3584d","rule":"sha256(name|slug|blurb)","write":"if-missing"}

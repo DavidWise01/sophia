@@ -1,0 +1,1 @@
+{"name":"Language, Not Race","slug":"language-not-race","blurb":"the category error","seal":"daf05a8ea8572494af6817c698490b449a7cbd6574e8e62c38e6fd0ca9005889","rule":"sha256(name|slug|blurb)","write":"if-missing"}

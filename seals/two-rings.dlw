@@ -1,0 +1,1 @@
+{"name":"Two Rings","slug":"two-rings","blurb":"nineteen circles","seal":"e52dc08a188de452ec8c499ba87f66b91622da91ffdd2572240d38791c80c4dd","rule":"sha256(name|slug|blurb)","write":"if-missing"}

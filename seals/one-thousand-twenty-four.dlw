@@ -1,0 +1,1 @@
+{"name":"One Thousand Twenty-Four","slug":"one-thousand-twenty-four","blurb":"ten bits","seal":"7ed74fd1c07e15e597d469b779a88e510b039762a5837959f779054aedf27d0c","rule":"sha256(name|slug|blurb)","write":"if-missing"}

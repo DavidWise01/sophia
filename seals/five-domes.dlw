@@ -1,0 +1,1 @@
+{"name":"Five Domes","slug":"five-domes","blurb":"a quincunx of roofs","seal":"b3816ae7af6d952b320052e7e80a433d46f1c22e37e1153a7c6005b9e5208056","rule":"sha256(name|slug|blurb)","write":"if-missing"}

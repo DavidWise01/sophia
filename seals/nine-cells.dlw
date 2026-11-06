@@ -1,0 +1,1 @@
+{"name":"Nine Cells","slug":"nine-cells","blurb":"a three-by-three table","seal":"a83fb60543017168a0c0a41ddb80b15aa4a0c56cce1f5150654e1419c5323bd3","rule":"sha256(name|slug|blurb)","write":"if-missing"}

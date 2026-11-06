@@ -1,0 +1,1 @@
+{"name":"Not the Flag","slug":"not-the-flag","blurb":"a word is not a regime","seal":"c4567e043a37c2520b3b8938a0b8b997b929a32c566e5377cdde9923c727166c","rule":"sha256(name|slug|blurb)","write":"if-missing"}

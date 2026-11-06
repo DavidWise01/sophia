@@ -1,0 +1,1 @@
+{"name":"The Nested Dolls","slug":"the-nested-dolls","blurb":"seven shells, six gaps","seal":"34796ca7f62732355739ffff9baebdbfd50af7ec831fcb9b032395a78b86bb00","rule":"sha256(name|slug|blurb)","write":"if-missing"}

@@ -1,0 +1,1 @@
+{"name":"Twelve Around","slug":"twelve-around","blurb":"the second ring alone","seal":"93f7a07292a19c657f32c63d9a38124c6a58d638c92023f56243e00a3004b49a","rule":"sha256(name|slug|blurb)","write":"if-missing"}

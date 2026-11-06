@@ -1,0 +1,1 @@
+{"name":"The Loanword","slug":"the-loanword","blurb":"how the English word arrived","seal":"ff6046ea42bc05a19e507e5c5446ceb1e35921579dd318324b7ea49e456f06a4","rule":"sha256(name|slug|blurb)","write":"if-missing"}

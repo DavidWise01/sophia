@@ -1,0 +1,1 @@
+{"name":"Cassini at Seven","slug":"cassini-seven","blurb":"the odd case","seal":"f0473ba55575f8db42eb85c2d064e9ac3385a7c3e34083d5a7bfa7896b73eedf","rule":"sha256(name|slug|blurb)","write":"if-missing"}

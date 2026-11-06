@@ -1,0 +1,1 @@
+{"name":"The Kolovrat","slug":"the-kolovrat","blurb":"a Russian word for a crank","seal":"ea5f8b0a9be99fa457282da51252a5c9a95b6aa05fb459e6b867721794b4b1e3","rule":"sha256(name|slug|blurb)","write":"if-missing"}

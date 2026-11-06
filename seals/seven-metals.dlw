@@ -1,0 +1,1 @@
+{"name":"Seven Metals","slug":"seven-metals","blurb":"the old list","seal":"66db0af4413ce46a8e29290e8bc82cf1efba8a9935659a0bfeed5460b1cabb6f","rule":"sha256(name|slug|blurb)","write":"if-missing"}

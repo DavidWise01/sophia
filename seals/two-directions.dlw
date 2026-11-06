@@ -1,0 +1,1 @@
+{"name":"Two Directions","slug":"two-directions","blurb":"clockwise and the other way","seal":"abd0b6f312d6d46e22e86104de0cc96cfc31b7225db27e1f43b1d381d2558c08","rule":"sha256(name|slug|blurb)","write":"if-missing"}

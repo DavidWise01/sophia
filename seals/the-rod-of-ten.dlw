@@ -1,0 +1,1 @@
+{"name":"The Rod of Ten","slug":"the-rod-of-ten","blurb":"one wire of a schoty","seal":"1f908126fee851c9bf870881f2b7aa87fc9199c1f7fe57758ccd015e7bbdb538","rule":"sha256(name|slug|blurb)","write":"if-missing"}

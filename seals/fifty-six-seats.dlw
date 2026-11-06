@@ -1,0 +1,1 @@
+{"name":"Fifty-Six Seats","slug":"fifty-six-seats","blurb":"four beats across fourteen lines","seal":"a0d8d2b4d49b27f24a00aaec1eeb088aed342608645cd9b2c4ce44c593b41e0b","rule":"sha256(name|slug|blurb)","write":"if-missing"}

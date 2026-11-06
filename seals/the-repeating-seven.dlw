@@ -1,0 +1,1 @@
+{"name":"The Repeating Seven","slug":"the-repeating-seven","blurb":"one divided by seven","seal":"d574283c2c5e61f49ff1b05271523e848422ccb895c7e453dab79f525e68bd7f","rule":"sha256(name|slug|blurb)","write":"if-missing"}

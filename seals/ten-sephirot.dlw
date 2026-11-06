@@ -1,0 +1,1 @@
+{"name":"Ten Sephirot","slug":"ten-sephirot","blurb":"nodes, not a power","seal":"6e4c490b7c8add3489a0651db094672e8d10f33023b6b03993966acec27442fb","rule":"sha256(name|slug|blurb)","write":"if-missing"}

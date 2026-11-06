@@ -1,0 +1,1 @@
+{"name":"The Devanagari","slug":"the-devanagari","blurb":"the same word in its script","seal":"a8fc4ff747b77aaf97253797f7978309658ddb8a3fc508b1fbe396a037df204d","rule":"sha256(name|slug|blurb)","write":"if-missing"}

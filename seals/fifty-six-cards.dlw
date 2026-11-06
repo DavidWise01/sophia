@@ -1,0 +1,1 @@
+{"name":"Suits and Ranks","slug":"fifty-six-cards","blurb":"the labels beside the deck","seal":"7461d6951275676dc8864c06bd4fd622e34813793aa16842bf1150747e52137a","rule":"sha256(name|slug|blurb)","write":"if-missing"}

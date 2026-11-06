@@ -1,0 +1,1 @@
+{"name":"The Sixth Power","slug":"the-sixth-power","blurb":"729","seal":"77c5b08bd07fdc3c46348f07f20a047a27c19d1d0054bac0f5024a69f12740d2","rule":"sha256(name|slug|blurb)","write":"if-missing"}

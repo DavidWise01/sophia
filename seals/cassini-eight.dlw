@@ -1,0 +1,1 @@
+{"name":"Cassini at Eight","slug":"cassini-eight","blurb":"the next even case","seal":"1b965378cabf292eca135e0c33c2eb4a9d9498cb420b0565a7ed022bb8c9ba83","rule":"sha256(name|slug|blurb)","write":"if-missing"}

@@ -1,0 +1,1 @@
+{"name":"The Ninth Power","slug":"the-ninth-power","blurb":"19683","seal":"3ae598dfdef98595388ee9bd2bc8c936852b9616a450c04123af65091b21f00b","rule":"sha256(name|slug|blurb)","write":"if-missing"}

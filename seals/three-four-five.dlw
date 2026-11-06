@@ -1,0 +1,1 @@
+{"name":"Three Four Five","slug":"three-four-five","blurb":"the integer right triangle","seal":"18871bfb671f04c2be4d0cef4bb09db4b134755250918deec5eaaefbbc2387bb","rule":"sha256(name|slug|blurb)","write":"if-missing"}

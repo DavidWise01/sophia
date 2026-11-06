@@ -1,0 +1,1 @@
+{"name":"Kazak","slug":"kazak","blurb":"a word that returns","seal":"b2b492a2064a56ed7bf1f357a84730e784b177493815d02528e6e9426953ac71","rule":"sha256(name|slug|blurb)","write":"if-missing"}

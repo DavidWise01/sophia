@@ -1,0 +1,1 @@
+{"name":"Sofia","slug":"sofia","blurb":"five letters of the keeper's name","seal":"abed18e197a7099cbd62be59d67b6672d00d99284fb773b6b1d2484ebf0b1089","rule":"sha256(name|slug|blurb)","write":"if-missing"}

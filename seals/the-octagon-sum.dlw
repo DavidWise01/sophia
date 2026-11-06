@@ -1,0 +1,1 @@
+{"name":"The Octagon Sum","slug":"the-octagon-sum","blurb":"eight corners","seal":"ae2648f046fc7d294be250c9fb977e7beaf424c4c8bb25264ef5200e840c4a79","rule":"sha256(name|slug|blurb)","write":"if-missing"}

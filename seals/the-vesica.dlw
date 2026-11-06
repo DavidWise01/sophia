@@ -1,0 +1,1 @@
+{"name":"The Vesica","slug":"the-vesica","blurb":"height root three","seal":"822af79e5c7225ecf8850a8a3c464d477564c5a60affec48f238c23f516960fc","rule":"sha256(name|slug|blurb)","write":"if-missing"}

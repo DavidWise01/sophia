@@ -1,0 +1,1 @@
+{"name":"Eight Letters","slug":"eight-letters","blurb":"the Latin spelling","seal":"847427b9122c482b3723f3c1c6e75995d2f62d68121aa93f0f71168b32c335fa","rule":"sha256(name|slug|blurb)","write":"if-missing"}

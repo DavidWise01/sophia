@@ -1,0 +1,1 @@
+{"name":"Su","slug":"su","blurb":"well","seal":"ff7215c10546793fbf926ee438891cc2b1d3f8c4bd66af4cc500a4b7a9184449","rule":"sha256(name|slug|blurb)","write":"if-missing"}

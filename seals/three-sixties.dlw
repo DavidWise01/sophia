@@ -1,0 +1,1 @@
+{"name":"Three Times Sixty","slug":"three-sixties","blurb":"the equilateral","seal":"53177961c2bf9987e1a330482d3037d3664aa57c5b7d73d0cbe62d8f83f7f688","rule":"sha256(name|slug|blurb)","write":"if-missing"}

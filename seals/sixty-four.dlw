@@ -1,0 +1,1 @@
+{"name":"Sixty-Four","slug":"sixty-four","blurb":"six lines, two choices","seal":"dcacf424a91b8ffcc90e13c613ac1b1ad9005bbf69e1e16b29d51b2144e15c13","rule":"sha256(name|slug|blurb)","write":"if-missing"}

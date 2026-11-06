@@ -1,0 +1,1 @@
+{"name":"The Seventh Letter","slug":"the-seventh-letter","blurb":"where yo sits","seal":"b2b4012363769f8bd1367e8884ca8e277988c1041d979b12070cb1673a817001","rule":"sha256(name|slug|blurb)","write":"if-missing"}

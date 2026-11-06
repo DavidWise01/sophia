@@ -1,0 +1,1 @@
+{"name":"The Seed","slug":"the-seed","blurb":"seven circles","seal":"7f6c9f1be5aae47d402be0872a95a3cc446c6e3320e54086aba773cba0d3ff78","rule":"sha256(name|slug|blurb)","write":"if-missing"}

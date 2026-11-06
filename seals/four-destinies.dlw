@@ -1,0 +1,1 @@
+{"name":"Four Destinies","slug":"four-destinies","blurb":"a Jain reading, marked amber","seal":"b3f5ebec11606f9d0df3aa1f2d8f79e3b4ee361994f93d05efa938f6e3a4b48c","rule":"sha256(name|slug|blurb)","write":"if-missing"}

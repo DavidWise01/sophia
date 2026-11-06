@@ -1,0 +1,1 @@
+{"name":"Order Seven","slug":"order-seven","blurb":"the constant beside the order","seal":"5a55beffe00a0b4b67ad16a83290734d198bf0503cb41ab0629fd2e56d7161dc","rule":"sha256(name|slug|blurb)","write":"if-missing"}

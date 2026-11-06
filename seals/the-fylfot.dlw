@@ -1,0 +1,1 @@
+{"name":"The Fylfot","slug":"the-fylfot","blurb":"an English folk name","seal":"ce7f8ba56b251cf378d5c791713b612e0aea8f7539c3c7fb7f1f88f8050c9cdc","rule":"sha256(name|slug|blurb)","write":"if-missing"}

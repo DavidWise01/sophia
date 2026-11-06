@@ -1,0 +1,22 @@
+# Sophia
+
+> A door outside the five-world palindrome. Dave asked for a world called Sophia. It is not World IV SONIA, and it is not a world 6. SONIA stays the Russian world.
+
+Keeper: Sophia. The door is this index. Each page is a five-window pentaptych. The page recomputes its identity on load and throws if the check slips.
+
+- [The door](./index.html)
+- [Birth seal](./seals/sophia.dlw) — sha256(name|slug|blurb), write-if-missing.
+
+Five rooms:
+
+- the Russian — letters, the calendar, the machine of three
+- the ternary — balanced digits −1, 0, +1
+- the geometry — polygons, the five solids, Cassini
+- the count — combinations and old lists, as arithmetic only
+- the root — Sanskrit svastika, from su + asti + ka, sandhi ua → va
+
+The water window on the root pages that draw the figure uses four arms at 0, 90, 180, and 270, in plain metal gray, labeled C4. Not the Flag says the 1920s–30s political emblem was a hijacking by a regime that murdered millions, and that page does not draw the flag. Language, Not Race says a language family is not a race.
+
+Claims are LIT when the page checks them, AMBER when a name sits beside the count, and WALL when the count does not show the further claim. A gloss is not a charm. Formal validity is not empirical truth.
+
+Host: DavidWise01/sophia. One host. The hallway links here from https://0root.ai/.

@@ -1,0 +1,1 @@
+{"name":"The Eighth Power","slug":"the-eighth-power","blurb":"eight trits","seal":"d66cf960818a01e759f46e64e7f62dc58f9d3ea7c80f8ef33de51e473e3a3ec6","rule":"sha256(name|slug|blurb)","write":"if-missing"}

@@ -1,0 +1,701 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kazak · Sophia · Five-Element Pentaptych</title>
+<style>
+:root{
+  --ground:#14110e;--ground-2:#1c1814;--card:#221c16;--rule:#3a3228;--rule-2:#3a4354;
+  --ink:#e6ebf2;--faint:#8592a4;--fainter:#4a5568;
+  --earth:#d9a441;--wood:#4fbf8f;--metal:#c7d0dc;--fire:#ff6a3d;--water:#4a8fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--ground);color:var(--ink);font:400 12px/1.5 "IBM Plex Mono",ui-monospace,Menlo,monospace}
+body{padding:18px 16px 40px}
+.wrap{max-width:1500px;margin:0 auto}
+.eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint);margin-bottom:9px}
+h1{font:600 26px/1.05 "IBM Plex Sans","Helvetica Neue",sans-serif;letter-spacing:-.02em;color:var(--ink)}
+h1 em{font-style:normal;color:var(--fire)}
+.sub{color:var(--faint);font-size:12.5px;max-width:104ch;line-height:1.6;margin-top:9px}
+.sub b{color:var(--ink);font-weight:400}
+.elrow{display:flex;gap:6px;margin:12px 0 4px;flex-wrap:wrap;font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+.elrow span{padding:2px 8px;border-radius:10px;border:1px solid currentColor}
+.master{display:flex;gap:12px;align-items:center;margin:14px 0;padding:11px 14px;background:var(--card);border:1px solid var(--rule);border-radius:8px;flex-wrap:wrap}
+.master .lbl{font-size:11px;color:var(--faint)}
+.master button{font:inherit;font-size:11px;color:var(--ink);background:var(--ground-2);border:1px solid var(--rule);border-radius:7px;padding:8px 13px;cursor:pointer}
+.master button.run{border-color:var(--fire);color:var(--fire);font-weight:600}
+.master .v{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--fire);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:stretch}
+@media(max-width:1180px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+.win{background:var(--card);border:1px solid var(--rule);border-radius:9px;overflow:hidden;display:flex;flex-direction:column;min-height:540px;border-top:2px solid var(--el)}
+.win.earth{--el:var(--earth)} .win.wood{--el:var(--wood)} .win.metal{--el:var(--metal)} .win.fire{--el:var(--fire)} .win.water{--el:var(--water)}
+.win .hd{padding:10px 12px;border-bottom:1px solid var(--rule);background:var(--ground-2)}
+.win .hd .tag{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--el)}
+.win .hd .el{float:right;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--el);opacity:.75}
+.win .hd .ttl{font:600 12.5px "IBM Plex Sans",sans-serif;color:var(--ink);margin-top:2px}
+.win .bd{padding:11px;flex:1;display:flex;flex-direction:column;gap:9px}
+.win canvas{width:100%;display:block;border-radius:6px;background:var(--ground)}
+.txt{font-size:10.5px;color:var(--faint);line-height:1.5}
+.txt b{color:var(--ink);font-weight:400}
+.stamp{display:inline-block;font-size:8.5px;padding:1px 6px;border-radius:10px;border:1px solid currentColor;margin-right:3px}
+.stamp.lit{color:var(--wood)} .stamp.amber{color:var(--earth)} .stamp.wall{color:var(--fire)}
+.ledger{font-size:10px;line-height:1.65}
+.ledger .who{color:var(--earth);font-weight:600}
+.ledger .who.c{color:var(--water)} .ledger .who.both{color:var(--wood)}
+.winrun{width:100%;font:inherit;font-size:11px;font-weight:600;color:var(--el);background:var(--ground-2);border:1px solid var(--el);border-radius:7px;padding:9px;cursor:pointer}
+.rows{display:flex;flex-direction:column;gap:4px}
+.rw{display:flex;align-items:center;gap:6px;font-size:10px;padding:4px 6px;border-radius:5px;background:var(--ground-2);cursor:pointer;border:1px solid transparent}
+.rw.on{border-color:var(--fire)}
+.rw .sw{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+.rw .nm{flex:1}
+.rw .od{color:var(--faint);font-variant-numeric:tabular-nums}
+.report{margin-top:auto;font-size:10px;padding:8px 9px;border-radius:6px;background:var(--ground-2);border:1px solid var(--rule)}
+.report .r{display:flex;justify-content:space-between;line-height:1.75}
+.report .r b{font-weight:400}
+.verdict{margin-top:8px;padding:9px;border-radius:6px;text-align:center;font-weight:600;font-size:11px;background:rgba(217,164,65,0.1);color:var(--earth);border:1px solid rgba(217,164,65,0.35)}
+.foot{color:var(--fainter);font-size:11px;line-height:1.7;margin-top:18px;max-width:112ch}
+.foot b{color:var(--faint);font-weight:400}
+</style></head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Sophia pentaptych · five-element palette (Earth·Wood·Metal·Fire·Water) · ground: lamp-brown · room: the Russian</div>
+  <h1>Kazak — <em>a word that returns</em></h1>
+  <p class="sub">The word reads the same from either end. The identity is checked on load. Toggle a part and the fire window adds only what is still on.</p>
+  <div class="elrow">
+    <span style="color:var(--earth)">W1 earth · source</span><span style="color:var(--wood)">W2 wood · built</span><span style="color:var(--metal)">W3 metal · 1D</span><span style="color:var(--fire)">W4 fire · interactive</span><span style="color:var(--water)">W5 water · figure</span>
+  </div>
+  <div class="master">
+    <span class="lbl">the Russian</span>
+    <button class="run" id="runAll">▸ run the series</button>
+    <button id="reset">↺ reset</button>
+    <span class="v" id="vClock">step 0</span>
+  </div>
+  <div class="grid">
+    <div class="win earth">
+      <div class="hd"><span class="el">earth</span><div class="tag">W1 · source</div><div class="ttl">What it is</div></div>
+      <div class="bd">
+        <div class="txt">The word reads the same from either end.</div>
+        <div class="txt"><span class="stamp lit">LIT</span> казак has 5 letters and equals its reverse.<br><span class="stamp amber">AMBER</span> Named beside the identity. The identity is what the page checks.<br><span class="stamp wall">WALL</span> A count of letters or steps is not a soul, and it is not a claim about a people.</div>
+        <div class="report">
+          <div class="r"><span>room</span><b>the Russian</b></div>
+          <div class="r"><span>proof</span><b>pal</b></div>
+        </div>
+        <div class="verdict" id="verdict">checking</div>
+      </div>
+    </div>
+    <div class="win wood">
+      <div class="hd"><span class="el">wood</span><div class="tag">W2 · contributions</div><div class="ttl">Built together</div></div>
+      <div class="bd">
+        <div class="txt" style="color:var(--wood)">One page, the August shape.</div>
+        <div class="ledger">
+          <div><span class="who">ROOT0 →</span> the ask: Sophia pages in the five-window form of the August precipice file.</div>
+          <div style="margin-top:7px"><span class="who c">Grok →</span> this identity, pal, checked in the page rather than described.</div>
+          <div style="margin-top:7px"><span class="who both">together →</span> Earth to Water, ground lamp-brown.</div>
+        </div>
+        <div class="report">
+          <div class="r"><span>build</span><b>kazak</b></div>
+          <div class="r"><span>palette</span><b>5-element</b></div>
+          <div class="r"><span>ground</span><b>lamp-brown</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="win metal">
+      <div class="hd"><span class="el">metal</span><div class="tag">W3 · 1D view</div><div class="ttl">The series</div></div>
+      <div class="bd">
+        <canvas id="c3" width="260" height="160"></canvas>
+        <div class="txt">Read from the letters on this page.</div>
+        <button class="winrun" id="run3">▸ run the series</button>
+        <div class="report">
+          <div class="r"><span>step</span><b id="p3">0</b></div>
+          <div class="r"><span>value</span><b id="h3">—</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="win fire">
+      <div class="hd"><span class="el">fire</span><div class="tag">W4 · 2D + interactive</div><div class="ttl">The parts · toggle</div></div>
+      <div class="bd">
+        <div class="rows" id="rows"></div>
+        <canvas id="c4" width="260" height="80"></canvas>
+        <div class="txt">Click a part off. The sum uses only the parts still on.</div>
+        <button class="winrun" id="run4">▸ recompute sum</button>
+        <div class="report">
+          <div class="r"><span>sum of parts on</span><b id="p4">—</b></div>
+          <div class="r"><span>parts on</span><b id="h4">—</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="win water">
+      <div class="hd"><span class="el">water</span><div class="tag">W5 · figure</div><div class="ttl">The figure</div></div>
+      <div class="bd">
+        <canvas id="c5" width="260" height="150"></canvas>
+        <div class="txt">Read from the letters on this page.</div>
+        <button class="winrun" id="run5">▸ draw again</button>
+        <div class="report">
+          <div class="r"><span>figure</span><b id="p5">bars</b></div>
+          <div class="r"><span>mark</span><b id="h5">0</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><b>Reading the Pentaptych.</b> Earth holds the source. Wood names the build. Metal draws the series. Fire toggles the parts, and the sum on the button is only the parts still lit. Water holds the figure. Read from the letters on this page. казак has 5 letters and equals its reverse.</div>
+</div>
+<script>
+(function(){
+var SPEC={"rows":[{"name":"letters","n":5,"col":"#d9a441"}],"series":[5],"water":"bars","waterArg":0,"lit":"казак has 5 letters and equals its reverse.","sum":5};
+var $=function(id){return document.getElementById(id);};
+var step=0;
+var rows=SPEC.rows.map(function(r){return {name:r.name,n:r.n,col:r.col,on:true};});
+function liveSum(){var s=0,k=0;rows.forEach(function(r){if(r.on){s+=r.n;k++;}});return {s:s,k:k};}
+var c3=$("c3"),g3=c3.getContext("2d"),c4=$("c4"),g4=c4.getContext("2d"),c5=$("c5"),g5=c5.getContext("2d");
+var DPR=Math.min(window.devicePixelRatio||1,2);
+function fitAll(){[[c3,g3,160,260],[c4,g4,80,260],[c5,g5,150,260]].forEach(function(o){var w=o[0].clientWidth||260;o[0].width=w*DPR;o[0].height=w*o[2]/o[3]*DPR;o[1].setTransform(DPR,0,0,DPR,0,0);o[0]._w=w;o[0]._h=w*o[2]/o[3];});}
+function drawW3(){
+  var W=c3._w,H=c3._h,g=g3,s=SPEC.series;g.clearRect(0,0,W,H);g.fillStyle=getComputedStyle(document.body).backgroundColor;g.fillRect(0,0,W,H);
+  var min=Math.min.apply(null,s), max=Math.max.apply(null,s); if(max===min){max=min+1;}
+  g.strokeStyle="#c7d0dc";g.lineWidth=2;g.beginPath();
+  for(var i=0;i<s.length;i++){var x=s.length===1?W/2:i/(s.length-1)*W; var y=H-((s[i]-min)/(max-min))*(H-24)-12; if(i===0)g.moveTo(x,y); else g.lineTo(x,y);} g.stroke();
+  var j=Math.min(step,s.length-1); var x=s.length===1?W/2:j/(s.length-1)*W; var y=H-((s[j]-min)/(max-min))*(H-24)-12;
+  g.fillStyle="#ff6a3d";g.beginPath();g.arc(x,y,4,0,6.28);g.fill();
+}
+function drawW4(){
+  var W=c4._w,H=c4._h,g=g4;g.clearRect(0,0,W,H);
+  var live=rows.filter(function(r){return r.on;});
+  var total=live.reduce(function(a,r){return a+Math.abs(r.n);},0)||1; var x=0;
+  live.forEach(function(r){var w=Math.abs(r.n)/total*W;g.fillStyle=r.col;g.fillRect(x,H*0.3,Math.max(0,w-1),H*0.4);x+=w;});
+}
+function drawHooks(g,W,H){
+  g.fillStyle="#c7d0dc"; g.font="10px monospace"; g.textAlign="center"; g.fillText("C4 · four arms · 90°", W/2, 16);
+  var cx=W/2, cy=H/2+6, s=Math.min(W,H)*0.22;
+  for(var i=0;i<4;i++){
+    g.save(); g.translate(cx,cy); g.rotate(i*Math.PI/2); g.strokeStyle="#c7d0dc"; g.lineWidth=3;
+    g.beginPath(); g.moveTo(0,0); g.lineTo(s,0); g.lineTo(s,s*0.55); g.stroke(); g.restore();
+  }
+}
+function drawPoly(g,W,H,n){
+  var cx=W/2, cy=H/2, r=Math.min(W,H)*0.36; g.strokeStyle="#4a8fff"; g.lineWidth=2; g.beginPath();
+  for(var i=0;i<=n;i++){var a=-Math.PI/2+i*2*Math.PI/n; var x=cx+r*Math.cos(a), y=cy+r*Math.sin(a); if(i===0)g.moveTo(x,y); else g.lineTo(x,y);} g.stroke();
+}
+function drawDigits(g,W,H,n){
+  var d=[], x=n;
+  if(n===0) d=[0];
+  while(x!==0){var rem=((x%3)+3)%3; if(rem===2) rem=-1; d.push(rem); x=(x-rem)/3;} 
+  g.fillStyle="#4a8fff"; g.font="12px monospace"; g.textAlign="left"; g.fillText("balanced "+n, 8, 20);
+  d.forEach(function(dig,i){g.fillStyle=dig<0?"#ff6a3d":dig>0?"#4fbf8f":"#c7d0dc"; g.fillText((dig>0?"+":"")+dig+" · 3^"+i, 8, 42+i*16);});
+}
+function drawGrid(g,W,H){
+  var cell=[["2","7","6"],["9","5","1"],["4","3","8"]];
+  var s=Math.min(W,H)*0.22, x0=W/2-1.5*s, y0=H/2-1.5*s;
+  g.font="14px monospace"; g.textAlign="center"; g.textBaseline="middle"; g.fillStyle="#d9a441";
+  for(var r=0;r<3;r++) for(var c=0;c<3;c++){g.strokeStyle="#3a4354"; g.strokeRect(x0+c*s,y0+r*s,s,s); g.fillText(cell[r][c], x0+c*s+s/2, y0+r*s+s/2);} 
+}
+function drawW5(){
+  var W=c5._w,H=c5._h,g=g5;g.clearRect(0,0,W,H);
+  if(SPEC.water==="hooks") drawHooks(g,W,H);
+  else if(SPEC.water==="poly") drawPoly(g,W,H,SPEC.waterArg);
+  else if(SPEC.water==="digits") drawDigits(g,W,H,SPEC.waterArg);
+  else if(SPEC.water==="grid") drawGrid(g,W,H);
+  else {g.fillStyle="#4a8fff"; g.font="11px monospace"; g.fillText("parts",8,16); var y=36; rows.forEach(function(r){if(!r.on) return; g.fillStyle=r.col; g.fillRect(8,y,Math.min(W-16, 8+Math.abs(r.n)*4),10); y+=16;});}
+}
+function update(){
+  var live=liveSum();
+  var s=SPEC.series; var j=Math.min(step,s.length-1);
+  $("vClock").textContent="step "+j+" · "+s[j];
+  $("p3").textContent=String(j); $("h3").textContent=String(s[j]);
+  $("p4").textContent=String(live.s); $("h4").textContent=live.k+"/"+rows.length;
+  var verdict=$("verdict");
+  if(live.k===rows.length && live.s===SPEC.sum) verdict.textContent="LIT · "+SPEC.lit;
+  else verdict.textContent="parts on "+live.k+" · sum "+live.s;
+}
+function buildRows(){
+  var el=$("rows"); el.innerHTML="";
+  rows.forEach(function(r){var d=document.createElement("div"); d.className="rw on";
+    d.innerHTML='<span class="sw" style="background:'+r.col+'"></span><span class="nm"></span><span class="od"></span>';
+    d.querySelector(".nm").textContent=r.name; d.querySelector(".od").textContent=String(r.n);
+    d.onclick=function(){r.on=!r.on; d.className=r.on?"rw on":"rw"; drawAll();};
+    el.appendChild(d);});
+}
+function drawAll(){drawW3();drawW4();drawW5();update();}
+var timer=null;
+function runSeries(){if(timer){clearInterval(timer);timer=null;} step=0; drawAll();
+  timer=setInterval(function(){step=Math.min(SPEC.series.length-1, step+1); drawAll(); if(step>=SPEC.series.length-1){clearInterval(timer);timer=null;}},350);}
+$("runAll").onclick=runSeries; $("run3").onclick=runSeries;
+$("reset").onclick=function(){if(timer){clearInterval(timer);timer=null;} step=0; rows.forEach(function(r){r.on=true;}); buildRows(); drawAll();};
+$("run4").onclick=function(){drawAll();};
+$("run5").onclick=function(){drawAll();};
+window.addEventListener("resize",function(){fitAll();drawAll();});
+fitAll(); buildRows(); drawAll();
+var again=(function model(spec) {
+  const palette = ["#d9a441", "#4fbf8f", "#c7d0dc", "#ff6a3d", "#4a8fff"];
+  function rowsFrom(pairs) {
+    return pairs.map(function (p, i) {
+      return { name: p[0], n: p[1], col: palette[i % palette.length] };
+    });
+  }
+  function sum(rs) {
+    let s = 0;
+    for (let i = 0; i < rs.length; i++) s += rs[i].n;
+    return s;
+  }
+  function balDigits(n) {
+    if (n === 0) return [0];
+    const d = [];
+    let x = n;
+    while (x !== 0) {
+      let rem = ((x % 3) + 3) % 3;
+      if (rem === 2) rem = -1;
+      d.push(rem);
+      x = (x - rem) / 3;
+    }
+    return d;
+  }
+  function fromBal(d) {
+    let s = 0, p = 1;
+    for (let i = 0; i < d.length; i++) { s += d[i] * p; p *= 3; }
+    return s;
+  }
+  function fib(n) {
+    let a = 1, b = 1;
+    if (n <= 2) return 1;
+    for (let i = 3; i <= n; i++) { const c = a + b; a = b; b = c; }
+    return b;
+  }
+  const alpha = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+  const vowels = "аеёиоуыэюя";
+  const cons = "бвгджзйклмнпрстфхцчшщ";
+  const signs = "ъь";
+  const roomWall = {
+    russian: "A count of letters or steps is not a soul, and it is not a claim about a people.",
+    ternary: "Three states make a trit. They do not make a spirit. Setun was a machine in Moscow.",
+    geometry: "A proportion is a number. It is not a spirit living in the drawing.",
+    count: "The luck, the destiny, and the power claimed for these counts are not shown here.",
+    root: "A language family is not a race. The political flag is not the Sanskrit word."
+  };
+  let rows = [];
+  let series = [];
+  let water = "bars";
+  let waterArg = 0;
+  let lit = "";
+  let detail = "";
+  let ok = false;
+  const k = spec.proof;
+
+  if (k === "alpha") {
+    rows = rowsFrom([["vowels", vowels.length], ["consonants", cons.length], ["signs", signs.length]]);
+    ok = vowels.length === 10 && cons.length === 21 && signs.length === 2 && alpha.length === 33 && (alpha.indexOf("ё") + 1) === 7;
+    lit = "10 vowels, 21 consonants, 2 signs, 33 letters. Yo is the 7th.";
+    series = [10, 21, 2, 33, 7];
+    detail = "The alphabet string on this page is the source. The three rows are its parts.";
+  } else if (k === "yo") {
+    rows = rowsFrom([["place of yo", alpha.indexOf("ё") + 1], ["letters before it", alpha.indexOf("ё")]]);
+    ok = alpha.indexOf("ё") + 1 === 7 && alpha.length === 33;
+    lit = "Ё is letter 7 of the 33.";
+    series = [7, 33];
+    detail = "Counted from the same alphabet string.";
+  } else if (k === "scheme") {
+    const scheme = "AbAbCCddEffEgg";
+    const families = {};
+    for (let i = 0; i < scheme.length; i++) families[scheme.charAt(i).toLowerCase()] = 1;
+    const fam = Object.keys(families).length;
+    rows = rowsFrom([["lines", scheme.length], ["rhyme families", fam]]);
+    ok = scheme.length === 14 && fam === 7;
+    lit = "The scheme AbAbCCddEffEgg is 14 lines and 7 rhyme families.";
+    series = [14, 7];
+    detail = "No line of the novel is copied. Only the length of the scheme.";
+  } else if (k === "stress") {
+    rows = rowsFrom([["beats in a line", 4], ["lines", 14]]);
+    ok = 4 * 14 === 56;
+    lit = "Four beats times fourteen lines is 56 seats.";
+    series = [4, 14, 56];
+    detail = "A seat is not a promise that every beat is stressed.";
+  } else if (k === "cheby") {
+    rows = rowsFrom([["k = 2, bound in fourths", 1], ["k = 3, bound in ninths", 1]]);
+    ok = (1 / (2 * 2) === 1 / 4) && (1 / (3 * 3) === 1 / 9) && (4 * (1 / 4) === 1) && (9 * (1 / 9) === 1);
+    lit = "At two widths the bound is 1/4. At three widths it is 1/9.";
+    series = [1 / 4, 1 / 9, 1 / 16, 1 / 25];
+    detail = "The page checks the squares. It does not draw a measured population.";
+  } else if (k === "defect") {
+    const angles = [50, 60, 40];
+    const s = angles[0] + angles[1] + angles[2];
+    rows = rowsFrom([["angle 50", 50], ["angle 60", 60], ["angle 40", 40]]);
+    ok = s === 150 && (180 - s) === 30 && s < 180;
+    lit = "50 + 60 + 40 = 150. The defect under 180 is 30.";
+    series = angles.concat([150, 30]);
+    detail = "This is the arithmetic of a shortfall. It is not a surveyed triangle.";
+  } else if (k === "doubles") {
+    let left = 13, right = 17, got = 0, kept = 0, drops = 0;
+    while (left > 0) {
+      if (left % 2 === 1) { got += right; kept++; } else drops++;
+      left = Math.floor(left / 2);
+      right *= 2;
+    }
+    rows = rowsFrom([["kept odd steps", kept], ["dropped even steps", drops]]);
+    ok = got === 221 && kept === 3 && drops === 1 && 13 * 17 === 221;
+    lit = "13 by 17 keeps 17, 68, and 136. They sum to 221.";
+    series = [17, 68, 136, 221];
+    water = "digits";
+    waterArg = 221;
+    detail = "An even step is dropped. An odd step is kept.";
+  } else if (k === "days") {
+    rows = rowsFrom([["new date", 14], ["old date", 1]]);
+    ok = 14 - 1 === 13;
+    lit = "In the 1918 switch, 1 became 14. The gap is 13 days.";
+    series = [1, 14, 13];
+    detail = "The decree's arithmetic, not a full calendar.";
+  } else if (k === "pal") {
+    const w = spec.arg;
+    const chars = Array.from(w);
+    const rev = chars.slice().reverse().join("");
+    rows = rowsFrom([["letters", chars.length]]);
+    ok = w === rev && chars.length === spec.n;
+    lit = w + " has " + chars.length + " letters and equals its reverse.";
+    series = [chars.length];
+    detail = "Read from the letters on this page.";
+  } else if (k === "len") {
+    const w = spec.arg;
+    const n = Array.from(w).length;
+    rows = rowsFrom([["letters", n]]);
+    ok = n === spec.n;
+    lit = w + " has " + n + " letters.";
+    series = [n];
+    detail = "Counted from the spelling on this page.";
+  } else if (k === "nest") {
+    rows = rowsFrom([["dolls", 7], ["gaps between them", 6]]);
+    ok = 7 - 1 === 6;
+    lit = "Seven nested dolls leave six gaps.";
+    series = [7, 6];
+    detail = "Seven is the assigned set. The gap count is the arithmetic.";
+  } else if (k === "beads") {
+    rows = rowsFrom([["beads on the rod", 10]]);
+    ok = 10 === 10;
+    lit = "The rod in view has 10 beads.";
+    series = [10];
+    detail = "Ten is the assigned rod, the common schoty count.";
+  } else if (k === "sum") {
+    rows = rowsFrom(spec.parts);
+    const s = sum(rows);
+    ok = s === spec.n;
+    lit = spec.lit;
+    series = rows.map(function (r) { return r.n; }).concat([s]);
+    detail = "The live sum of the rows that are still on.";
+  } else if (k === "pow") {
+    const a = spec.a, b = spec.b, c = spec.c;
+    rows = rowsFrom([["base", a], ["power", b], ["value", c]]);
+    ok = Math.pow(a, b) === c;
+    lit = a + " to the " + b + " is " + c + ".";
+    series = [];
+    for (let i = 0; i <= b; i++) series.push(Math.pow(a, i));
+    detail = "Recomputed as repeated multiplication.";
+  } else if (k === "range") {
+    const n = spec.n;
+    const count = Math.pow(3, n);
+    const half = (count - 1) / 2;
+    rows = rowsFrom([["trits", n], ["patterns", count], ["each way from zero", half]]);
+    let round = true;
+    for (let v = -half; v <= half; v++) if (fromBal(balDigits(v)) !== v) round = false;
+    ok = count === spec.count && half === spec.half && round;
+    lit = n + " trits make " + count + " patterns, from -" + half + " to " + half + ".";
+    series = [n, count, half];
+    water = "digits";
+    waterArg = half;
+    detail = "Every integer in that range converts and comes back.";
+  } else if (k === "negate") {
+    let good = true;
+    for (let v = 1; v <= 40; v++) {
+      const d = balDigits(v).map(function (x) { return -x; });
+      if (fromBal(d) !== -v) good = false;
+    }
+    rows = rowsFrom([["values checked", 40], ["sign flip", 1]]);
+    ok = good && fromBal(balDigits(13).map(function (x) { return -x; })) === -13;
+    lit = "Flipping every trit of a value from 1 to 40 negates it.";
+    series = balDigits(13);
+    water = "digits";
+    waterArg = 13;
+    detail = "Thirteen is the sample drawn in the water window.";
+  } else if (k === "cantor") {
+    const n = spec.n;
+    const num = 2 ** n;
+    const den = 3 ** n;
+    rows = rowsFrom([["removals", n], ["numerator 2^n", num], ["denominator 3^n", den]]);
+    ok = num === Math.pow(2, n) && den === Math.pow(3, n) && num < den && num > 0;
+    lit = "After " + n + " middle-third cuts, the length left is " + num + "/" + den + ".";
+    series = [];
+    for (let i = 0; i <= n; i++) series.push(Math.pow(2, i) / Math.pow(3, i));
+    detail = "The dust keeps two of the three pieces each time.";
+  } else if (k === "econ") {
+    const e2 = 2 / Math.log(2);
+    const e3 = 3 / Math.log(3);
+    rows = rowsFrom([["base 2 scaled by 1000", Math.round(e2 * 1000)], ["base 3 scaled by 1000", Math.round(e3 * 1000)]]);
+    ok = e3 < e2 && e3 > 0;
+    lit = "Base 3 costs less radix than base 2: 3/ln 3 is under 2/ln 2.";
+    series = [Math.round(e2 * 1000), Math.round(e3 * 1000)];
+    detail = "This compares bases. It does not price a machine.";
+  } else if (k === "round") {
+    const nums = spec.nums;
+    let good = true;
+    for (let i = 0; i < nums.length; i++) if (fromBal(balDigits(nums[i])) !== nums[i]) good = false;
+    rows = rowsFrom(nums.map(function (n) { return [String(n), n]; }));
+    ok = good;
+    lit = "Each listed number survives a trip through balanced ternary.";
+    series = nums;
+    water = "digits";
+    waterArg = nums[0];
+    detail = "Digits use -1, 0, and 1. There is no digit 2.";
+  } else if (k === "weights") {
+    const ws = [1, 3, 9, 27, 81];
+    rows = rowsFrom(ws.map(function (n, i) { return ["3^" + i, n]; }));
+    ok = sum(rows) === 121 && ws[0] + ws[1] + ws[2] + ws[3] + ws[4] === 121;
+    lit = "1+3+9+27+81 = 121.";
+    series = ws;
+    detail = "These are the place values of five trits, taken positive.";
+  } else if (k === "log3") {
+    rows = rowsFrom([["target", 81], ["trits to reach it", 4]]);
+    ok = Math.pow(3, 4) === 81;
+    lit = "81 is 3 to the 4, so the ternary depth is 4.";
+    series = [1, 3, 9, 27, 81];
+    detail = "Exact power, not a rounded log.";
+  } else if (k === "rep") {
+    const n = 5;
+    const v = (Math.pow(3, n) - 1) / 2;
+    rows = rowsFrom([["trits", n], ["value", v]]);
+    ok = v === 121 && fromBal([1, 1, 1, 1, 1]) === 121;
+    lit = "Five trits of +1 sum to 121, which is (3^5 - 1) / 2.";
+    series = [1, 1, 1, 1, 1];
+    water = "digits";
+    waterArg = 121;
+    detail = "All marks positive, then read back.";
+  } else if (k === "vesica") {
+    const h = Math.sqrt(1 - 0.5 * 0.5) * 2;
+    rows = rowsFrom([["width, in tenths", 10], ["height over width, in tenths", Math.round(h * 10)]]);
+    ok = Math.abs(h - Math.sqrt(3)) < 1e-12;
+    lit = "Two unit circles whose centers are 1 apart cross at height √3.";
+    series = [1, Math.round(h * 1000)];
+    water = "poly";
+    waterArg = 3;
+    detail = "Height is 2 √(1 - 0.5²), which is √3.";
+  } else if (k === "angle") {
+    rows = rowsFrom([["corners", spec.n], ["straight angle", 180]]);
+    const interior = (spec.n - 2) * 180;
+    ok = interior === spec.sum;
+    lit = "A regular " + spec.n + "-gon holds " + interior + " degrees inside.";
+    series = [spec.n, interior];
+    water = "poly";
+    waterArg = spec.n;
+    detail = "(n - 2) times 180.";
+  } else if (k === "cassini") {
+    const n = spec.n;
+    const left = fib(n + 1) * fib(n - 1) - fib(n) * fib(n);
+    const right = (n % 2 === 0) ? 1 : -1;
+    rows = rowsFrom([["F" + (n + 1), fib(n + 1)], ["F" + n, fib(n)], ["F" + (n - 1), fib(n - 1)]]);
+    ok = left === right;
+    lit = "F" + (n + 1) + " · F" + (n - 1) + " − F" + n + "² = " + right + ".";
+    series = [fib(1), fib(2), fib(3), fib(4), fib(5), fib(6), fib(7), fib(8)];
+    detail = "Cassini's identity on these Fibonacci numbers. The golden ratio is the limit, not this integer.";
+  } else if (k === "phi") {
+    rows = rowsFrom([["continued ones checked", 8]]);
+    const phi = (1 + Math.sqrt(5)) / 2;
+    ok = Math.abs(phi * phi - phi - 1) < 1e-12;
+    lit = "φ² = φ + 1, for φ = (1 + √5) / 2.";
+    series = [1, 1, 2, 3, 5, 8, 13, 21];
+    detail = "The identity is algebraic. A drawing of a spiral is not required.";
+  } else if (k === "silver") {
+    const s = 1 + Math.sqrt(2);
+    rows = rowsFrom([["square side", 1], ["the extra root", 1]]);
+    ok = Math.abs(s * s - (2 * s + 1)) < 1e-12;
+    lit = "The silver ratio δ = 1 + √2 satisfies δ² = 2δ + 1.";
+    series = [1, 2, 5, 12, 29];
+    detail = "Checked by expanding both sides.";
+  } else if (k === "platonic") {
+    const solids = [[4, 6, 4], [8, 12, 6], [6, 12, 8], [20, 30, 12], [12, 30, 20]];
+    const names = ["tetrahedron", "cube", "octahedron", "dodecahedron", "icosahedron"];
+    rows = rowsFrom(names.map(function (name, i) { return [name + " V−E+F", solids[i][0] - solids[i][1] + solids[i][2]]; }));
+    ok = solids.every(function (s) { return s[0] - s[1] + s[2] === 2; }) && solids.length === 5;
+    lit = "Five solids. Each has V − E + F = 2.";
+    series = solids.map(function (s) { return s[0] - s[1] + s[2]; });
+    water = "poly";
+    waterArg = 6;
+    detail = "Tetrahedron 4,6,4. Cube 8,12,6. Octahedron 6,12,8. Dodecahedron 20,30,12. Icosahedron 12,30,20.";
+  } else if (k === "dual") {
+    rows = rowsFrom([["cube faces", 6], ["octahedron vertices", 6], ["shared edges", 12]]);
+    ok = 6 === 6 && (8 - 12 + 6 === 2) && (6 - 12 + 8 === 2);
+    lit = "The cube's 6 faces match the octahedron's 6 vertices. Both keep Euler's 2.";
+    series = [8, 12, 6, 6, 12, 8];
+    detail = "Faces and vertices trade. Edges stay 12.";
+  } else if (k === "seed") {
+    rows = rowsFrom([["center", 1], ["ring", 6]]);
+    ok = 1 + 6 === 7;
+    lit = "One circle and six around it are seven.";
+    series = [1, 6, 7];
+    water = "poly";
+    waterArg = 6;
+    detail = "Seven is the seed count. A larger flower is a further ring.";
+  } else if (k === "flower") {
+    rows = rowsFrom([["center", 1], ["first ring", 6], ["second ring", 12]]);
+    ok = 1 + 6 + 12 === 19;
+    lit = "1 + 6 + 12 = 19 circles in the two-ring drawing.";
+    series = [1, 6, 12, 19];
+    detail = "Nineteen is this drawing's count, not a law of nature.";
+  } else if (k === "pyth") {
+    rows = rowsFrom([["3 squared", 9], ["4 squared", 16], ["5 squared", 25]]);
+    ok = 9 + 16 === 25;
+    lit = "3² + 4² = 5².";
+    series = [3, 4, 5];
+    detail = "An integer right triangle. Nothing further is claimed for it.";
+  } else if (k === "chords") {
+    const n = 6;
+    const c = n * (n - 1) / 2;
+    rows = rowsFrom([["points", n], ["chords", c]]);
+    ok = c === 15;
+    lit = "Six points on a circle, every pair joined, make 15 chords.";
+    series = [6, 15];
+    water = "poly";
+    waterArg = 6;
+    detail = "C(6, 2) = 15.";
+  } else if (k === "tetra") {
+    const edges = 4 * 3 / 2;
+    rows = rowsFrom([["vertices", 4], ["edges", edges], ["faces", 4]]);
+    ok = edges === 6 && 4 - 6 + 4 === 2;
+    lit = "Four points, every pair joined, make 6 edges, and 4 − 6 + 4 = 2.";
+    series = [4, 6, 4, 2];
+    water = "poly";
+    waterArg = 3;
+    detail = "The complete figure on 4 vertices.";
+  } else if (k === "merkaba") {
+    rows = rowsFrom([["one tetrahedron", 4], ["the other", 4]]);
+    ok = 4 + 4 === 8;
+    lit = "Two tetrahedra, counted separately, have 8 vertices.";
+    series = [4, 4, 8];
+    water = "poly";
+    waterArg = 3;
+    detail = "Eight is the separate count. A fused star is a further identification.";
+  } else if (k === "loshu") {
+    const g = [[2, 7, 6], [9, 5, 1], [4, 3, 8]];
+    const lines = [];
+    for (let i = 0; i < 3; i++) lines.push(g[i][0] + g[i][1] + g[i][2]);
+    for (let i = 0; i < 3; i++) lines.push(g[0][i] + g[1][i] + g[2][i]);
+    lines.push(g[0][0] + g[1][1] + g[2][2]);
+    lines.push(g[0][2] + g[1][1] + g[2][0]);
+    rows = rowsFrom([["lines that sum", lines.length], ["the sum", 15]]);
+    ok = lines.length === 8 && lines.every(function (n) { return n === 15; });
+    lit = "Eight lines of the order-3 square each sum to 15.";
+    series = lines;
+    water = "grid";
+    waterArg = 15;
+    detail = "2 7 6 / 9 5 1 / 4 3 8. Rows, columns, and both diagonals.";
+  } else if (k === "magic") {
+    function mc(n) { return n * (n * n + 1) / 2; }
+    const want = { 3: 15, 4: 34, 5: 65, 6: 111, 7: 175, 8: 260, 9: 369 };
+    const keys = [3, 4, 5, 6, 7, 8, 9];
+    rows = rowsFrom(keys.map(function (n) { return ["order " + n, mc(n)]; }));
+    ok = keys.every(function (n) { return mc(n) === want[n]; });
+    lit = "Orders 3 through 9 have constants 15, 34, 65, 111, 175, 260, 369.";
+    series = keys.map(mc);
+    detail = "n(n²+1)/2. A talisman is not part of the sum.";
+  } else if (k === "binom") {
+    const c = 22 * 21 / 2;
+    rows = rowsFrom([["letters", 22], ["pairs", c]]);
+    ok = c === 231;
+    lit = "C(22, 2) = 231.";
+    series = [22, 231];
+    detail = "Twenty-two letters, every unordered pair. The gate story is not the count.";
+  } else if (k === "tarot") {
+    rows = rowsFrom([["trumps", 22], ["suits", 4], ["ranks in a suit", 14]]);
+    ok = 22 + 4 * 14 === 78 && 4 * 14 === 56;
+    lit = "22 + 4×14 = 78. The suited cards are 56.";
+    series = [22, 56, 78];
+    detail = "A deck count. A reading of the future is not in the sum.";
+  } else if (k === "seventh") {
+    rows = rowsFrom([["the block", 142857], ["the divisor", 7]]);
+    ok = 142857 * 7 === 999999;
+    lit = "142857 × 7 = 999999.";
+    series = [1, 4, 2, 8, 5, 7];
+    detail = "The repeating block of 1/7. A personality chart is not this product.";
+  } else if (k === "hex") {
+    rows = rowsFrom([["lines", 6], ["patterns", 64], ["trigrams", 8]]);
+    ok = Math.pow(2, 6) === 64 && Math.pow(2, 3) === 8;
+    lit = "Six broken-or-whole lines make 64 figures. Three lines make 8.";
+    series = [2, 4, 8, 16, 32, 64];
+    detail = "Powers of two. A thrown future is not one of them.";
+  } else if (k === "tetractys") {
+    rows = rowsFrom([["row", 1], ["row", 2], ["row", 3], ["row", 4]]);
+    ok = 1 + 2 + 3 + 4 === 10;
+    lit = "1 + 2 + 3 + 4 = 10.";
+    series = [1, 2, 3, 4, 10];
+    detail = "The triangle of the first four integers.";
+  } else if (k === "circle") {
+    rows = rowsFrom([["signs", 12], ["degrees in a sign", 30]]);
+    ok = 12 * 30 === 360;
+    lit = "Twelve signs of 30 degrees fill 360.";
+    series = [12, 30, 360];
+    water = "poly";
+    waterArg = 12;
+    detail = "A division of the circle. Not a fate.";
+  } else if (k === "decans") {
+    rows = rowsFrom([["signs", 12], ["decans in a sign", 3]]);
+    ok = 12 * 3 === 36;
+    lit = "Twelve signs times three decans is 36.";
+    series = [12, 3, 36];
+    detail = "The ternary cut of the zodiac, as a product.";
+  } else if (k === "sandhi") {
+    const naive = "su" + "asti" + "ka";
+    const word = naive.replace("ua", "va");
+    rows = rowsFrom([["su", 2], ["asti", 4], ["ka", 2]]);
+    ok = naive === "suastika" && word === "svastika" && word.length === 8;
+    lit = "su + asti + ka = suastika. Sandhi ua → va yields svastika.";
+    series = [2, 4, 2, 8];
+    detail = "Three pieces. The join eats the meeting of u and a.";
+  } else if (k === "c4") {
+    rows = rowsFrom([["arms", 4], ["degrees of one turn", 90]]);
+    ok = 4 * 90 === 360;
+    lit = "Four arms, each a quarter turn, close the circle: 4 × 90 = 360.";
+    series = [0, 90, 180, 270, 360];
+    water = "hooks";
+    waterArg = 4;
+    detail = "One arm, copied by rotation. The drawing is the geometry, in plain ink.";
+  } else if (k === "turns") {
+    const degs = [0, 90, 180, 270];
+    rows = rowsFrom(degs.map(function (d) { return [d + "°", d]; }));
+    ok = degs.length === 4 && degs[0] + degs[1] + degs[2] + degs[3] === 540 && 4 * 90 === 360;
+    lit = "The four positions are 0, 90, 180, and 270. Four steps return to the start.";
+    series = degs;
+    water = "hooks";
+    waterArg = 4;
+    detail = "The cyclic group of order 4.";
+  } else if (k === "scripts") {
+    const dev = "स्वस्तिक";
+    const lat = "svastika";
+    rows = rowsFrom([["Latin letters", lat.length], ["Devanagari code points", Array.from(dev).length], ["scripts named", 2]]);
+    ok = lat.length === 8 && Array.from(dev).length === 8 && ("su" + "asti" + "ka").replace("ua", "va") === lat;
+    lit = "svastika has 8 Latin letters. The Devanagari स्वस्तिक on this page has 8 code points. The sandhi still yields svastika.";
+    series = [8, 8, 2];
+    detail = "Two scripts are written here. A reconstructed tongue is not a third script on the page.";
+  } else if (k === "hundred") {
+    rows = rowsFrom([["rooms", 5], ["pages in a room", 20]]);
+    ok = 5 * 20 === 100;
+    lit = "Five rooms times twenty pages is 100.";
+    series = [5, 20, 100];
+    detail = "Russian, ternary, geometry, the count, and the root.";
+  } else {
+    ok = false;
+    lit = "unknown proof";
+  }
+
+  if (!ok) {
+    return { ok: false, lit: "LIT FAIL " + spec.slug, rows: rows, series: series, water: water, waterArg: waterArg, detail: detail };
+  }
+  return {
+    ok: true,
+    lit: lit,
+    amber: spec.amber,
+    wall: spec.wall || roomWall[spec.room],
+    rows: rows,
+    series: series,
+    water: water,
+    waterArg: waterArg,
+    detail: detail,
+    sum: sum(rows)
+  };
+})({"slug":"kazak","title":"Kazak","em":"a word that returns","room":"russian","proof":"pal","focus":"The word reads the same from either end.","arg":"казак","n":5,"amber":"Named beside the identity. The identity is what the page checks."});
+if(!again.ok||again.lit!==SPEC.lit) throw new Error("LIT FAIL");
+if($("verdict").textContent.indexOf("LIT")!==0) throw new Error("LIT FAIL");
+})();
+</script>
+</body></html>

@@ -1,0 +1,1 @@
+{"name":"Four Arms","slug":"four-arms","blurb":"a quarter turn, four times","seal":"516e54146489afc9662590fcca50e160d032858156c7611dc67dc2303392969c","rule":"sha256(name|slug|blurb)","write":"if-missing"}

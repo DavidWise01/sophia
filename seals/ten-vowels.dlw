@@ -1,0 +1,1 @@
+{"name":"Ten Vowels","slug":"ten-vowels","blurb":"the vowel row","seal":"0cc67e3d8540dcc477e3684eae7532eea358fe9e5c423bf919c69831c0406ab4","rule":"sha256(name|slug|blurb)","write":"if-missing"}

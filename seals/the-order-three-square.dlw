@@ -1,0 +1,1 @@
+{"name":"The Order-Three Square","slug":"the-order-three-square","blurb":"eight lines of fifteen","seal":"603c2c9591b85d3992d872787716caf24a472e2c1a50bae712bc3a0eb2f7cd0f","rule":"sha256(name|slug|blurb)","write":"if-missing"}

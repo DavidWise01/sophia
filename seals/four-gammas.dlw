@@ -1,0 +1,1 @@
+{"name":"Four Gammas","slug":"four-gammas","blurb":"the Greek name","seal":"43972e6cbedf3f99a71e5a906145576ed8044ed916e6ed2214a248301f94192d","rule":"sha256(name|slug|blurb)","write":"if-missing"}

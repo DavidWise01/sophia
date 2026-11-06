@@ -1,0 +1,1 @@
+{"name":"Nine Times Nine","slug":"nine-times-nine","blurb":"the square of nine","seal":"f3de1b377a6779debc4b65c8569155bae2dc78c0564eb35ade6f34f81a7f2434","rule":"sha256(name|slug|blurb)","write":"if-missing"}

@@ -1,0 +1,1 @@
+{"name":"Fifteen Chords","slug":"fifteen-chords","blurb":"six points, every pair","seal":"24bc743323051edddab1905b44c4df13ffd1c110e7eacb5dc78baf46878e53a5","rule":"sha256(name|slug|blurb)","write":"if-missing"}

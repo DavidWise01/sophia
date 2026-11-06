@@ -1,0 +1,1 @@
+{"name":"Depth of Eighty-One","slug":"depth-of-eighty-one","blurb":"an exact power","seal":"2c592d0b908e43313c26528644ade4d8c209dd1e852bce90aaa9399f1dd92859","rule":"sha256(name|slug|blurb)","write":"if-missing"}

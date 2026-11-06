@@ -1,0 +1,1 @@
+{"name":"Cassini at Six","slug":"cassini-six","blurb":"an integer near the gold","seal":"9507daf62aebe3f8f644e22bc6442e4f9bda32897e1486b01bf0001fe0f59798","rule":"sha256(name|slug|blurb)","write":"if-missing"}

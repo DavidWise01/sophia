@@ -1,0 +1,1 @@
+{"name":"The Seven Constants","slug":"the-seven-constants","blurb":"orders three through nine","seal":"cc429dd75184f88dcf44e8f0114bac4436bb0c4a6cdff524391c60e4d17c4ac3","rule":"sha256(name|slug|blurb)","write":"if-missing"}

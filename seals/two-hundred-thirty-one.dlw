@@ -1,0 +1,1 @@
+{"name":"Two Hundred Thirty-One","slug":"two-hundred-thirty-one","blurb":"every pair of letters","seal":"56d5304358f873f7831f1c7cdc498386a2cf3913762f50483add512c4892fc63","rule":"sha256(name|slug|blurb)","write":"if-missing"}

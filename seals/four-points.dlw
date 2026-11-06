@@ -1,0 +1,1 @@
+{"name":"Four Points","slug":"four-points","blurb":"the tetrahedron's edges","seal":"d3f5e5cebcf6ae4c0c53ea4a30e94c1489fab3592fb5a8fe7fe21dc71f09925a","rule":"sha256(name|slug|blurb)","write":"if-missing"}

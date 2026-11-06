@@ -1,0 +1,1 @@
+{"name":"The Troika","slug":"the-troika","blurb":"three horses","seal":"7befe975056664d11b77a83b34851a1504a21ccfb962aa653c0e3a93f15370ad","rule":"sha256(name|slug|blurb)","write":"if-missing"}

@@ -1,0 +1,1 @@
+{"name":"Four Positions","slug":"four-positions","blurb":"zero, ninety, one-eighty, two-seventy","seal":"4b47e4682f2ae98139fac2bb3d4cef7b6331463422e451872584d1996cab3c3b","rule":"sha256(name|slug|blurb)","write":"if-missing"}

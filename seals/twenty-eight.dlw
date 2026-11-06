@@ -1,0 +1,1 @@
+{"name":"Twenty-Eight","slug":"twenty-eight","blurb":"four weeks added","seal":"a58280905265d1c92b9450b97016ce17ec46bdfba28863363a444533a49958e8","rule":"sha256(name|slug|blurb)","write":"if-missing"}

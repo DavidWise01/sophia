@@ -1,0 +1,1 @@
+{"name":"The Four-Trit Range","slug":"four-trit-range","blurb":"from minus forty to forty","seal":"247ce7c494a0b373250f821ccc2a6808e3c8a82987d75e301775aa9e0e14111f","rule":"sha256(name|slug|blurb)","write":"if-missing"}

@@ -1,0 +1,1 @@
+{"name":"Six Faces","slug":"six-faces","blurb":"the cube will not grow a seventh","seal":"0121d731320af3f2852d5f8d51fbd6fbccbc1c6cf500d1b161d9111c8097f993","rule":"sha256(name|slug|blurb)","write":"if-missing"}

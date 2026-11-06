@@ -1,0 +1,1 @@
+{"name":"Brusentsov","slug":"brusentsov","blurb":"Moscow, a machine of three","seal":"b2d3b05b07c20915e532990ca9aa83d33812994d03f022b2540cf957872f9e4e","rule":"sha256(name|slug|blurb)","write":"if-missing"}

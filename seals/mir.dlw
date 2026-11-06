@@ -1,0 +1,1 @@
+{"name":"Mir","slug":"mir","blurb":"one spelling, named once","seal":"6c66de2a39157b0f3428b86da784ec71f9e908ac9041083c46871df41055f06f","rule":"sha256(name|slug|blurb)","write":"if-missing"}

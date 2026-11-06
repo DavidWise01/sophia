@@ -1,0 +1,1 @@
+{"name":"Thirty-Two","slug":"thirty-two","blurb":"nodes plus paths","seal":"740388661c31b94e66d48cbddd645e05efae66e948693d01d1d8f3fc638bcb66","rule":"sha256(name|slug|blurb)","write":"if-missing"}

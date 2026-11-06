@@ -1,0 +1,1 @@
+{"name":"Two Scripts","slug":"two-scripts","blurb":"Latin and Devanagari, and no third","seal":"fb17084f431da47da868c5c5571a92e29ae4ac0365199a955862515fe99b0a1b","rule":"sha256(name|slug|blurb)","write":"if-missing"}

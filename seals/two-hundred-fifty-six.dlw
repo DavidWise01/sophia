@@ -1,0 +1,1 @@
+{"name":"Two Hundred Fifty-Six","slug":"two-hundred-fifty-six","blurb":"eight bits","seal":"8bfab1ad026a91181a3df1db5f2b091ca260ac989d06f8851aec2b4c6d21114f","rule":"sha256(name|slug|blurb)","write":"if-missing"}
