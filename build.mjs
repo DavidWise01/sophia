@@ -944,30 +944,80 @@ function hash(s) {
 }
 
 function indexHtml(items) {
-  const cols = ["russian", "ternary", "geometry", "count", "root"].map(function (room) {
-    const links = items.filter(function (p) { return p.room === room; }).map(function (p) {
-      return `<a href="${p.slug}.html">${esc(p.title)}</a>`;
+  const widths = [1, 3, 6, 9, 11, 11, 9, 6, 3, 1];
+  const band = widths.reduce(function (a, b) { return a + b; }, 0);
+  if (band !== 60) throw new Error("band " + band);
+  if (items.length % band !== 0) throw new Error("diamond " + items.length);
+  const rooms = ["russian", "ternary", "geometry", "count", "root"];
+  const cls = { russian: "earth", ternary: "wood", geometry: "metal", count: "fire", root: "water" };
+  const queues = {};
+  rooms.forEach(function (r) { queues[r] = items.filter(function (p) { return p.room === r; }); });
+  rooms.forEach(function (r) {
+    if (queues[r].length !== items.length / rooms.length) throw new Error("room " + r + " " + queues[r].length);
+  });
+  const seated = {};
+  function take(n) {
+    const out = [];
+    let i = 0;
+    while (out.length < n) {
+      const room = rooms[i % rooms.length];
+      const q = queues[room];
+      if (!q.length) throw new Error("short " + room);
+      const p = q.shift();
+      if (seated[p.slug]) throw new Error("twice " + p.slug);
+      seated[p.slug] = 1;
+      out.push(p);
+      i++;
+    }
+    return out;
+  }
+  const bands = items.length / band;
+  let diamonds = "";
+  for (let b = 0; b < bands; b++) {
+    const chunk = take(band);
+    let at = 0;
+    const rows = widths.map(function (w) {
+      const slice = chunk.slice(at, at + w);
+      if (slice.length !== w) throw new Error("row " + w + " " + slice.length);
+      at += w;
+      const seats = slice.map(function (p) {
+        return `<a class="seat ${cls[p.room]}" href="${p.slug}.html"><span class="tag">${esc(roomName[p.room])}</span>${esc(p.title)}</a>`;
+      }).join("");
+      return `<div class="row" data-n="${w}"><span class="n">${w}</span><span class="seats">${seats}</span></div>`;
     }).join("");
-    return `<div class="win ${room === "russian" ? "earth" : room === "ternary" ? "wood" : room === "geometry" ? "metal" : room === "count" ? "fire" : "water"}"><div class="hd"><div class="tag">${esc(roomName[room])}</div><div class="ttl">${items.filter(function (p) { return p.room === room; }).length} pages</div></div><div class="bd links">${links}</div></div>`;
-  }).join("");
+    if (at !== band) throw new Error("at " + at);
+    diamonds += `<section class="diamond" data-band="${b + 1}"><p class="band">sixty · 1 × 3 × 6 × 9 × 11 × 11 × 9 × 6 × 3 × 1</p>${rows}</section>`;
+  }
+  if (Object.keys(seated).length !== items.length) throw new Error("seated " + Object.keys(seated).length);
+  rooms.forEach(function (r) { if (queues[r].length) throw new Error("left " + r); });
+  const shape = "1 × 3 × 6 × 9 × 11 × 11 × 9 × 6 × 3 × 1";
   return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sophia · ${items.length} pentaptychs</title>
+<title>Sophia · ${shape}</title>
 <style>
 :root{--ground:#12151c;--ground-2:#171b24;--card:#1a1f2a;--rule:#2a3140;--ink:#e6ebf2;--faint:#8592a4;--earth:#d9a441;--wood:#4fbf8f;--metal:#c7d0dc;--fire:#ff6a3d;--water:#4a8fff}
 *{box-sizing:border-box;margin:0;padding:0} body{background:var(--ground);color:var(--ink);font:400 13px/1.5 ui-monospace,Consolas,monospace;padding:18px}
-.wrap{max-width:1500px;margin:0 auto} h1{font:600 28px/1.1 "IBM Plex Sans","Helvetica Neue",sans-serif;margin:8px 0}
-.sub{color:var(--faint);max-width:90ch;margin:8px 0 16px} .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-@media(max-width:1100px){.grid{grid-template-columns:1fr}}
-.win{background:var(--card);border:1px solid var(--rule);border-radius:9px;border-top:2px solid var(--el)}
-.win.earth{--el:var(--earth)} .win.wood{--el:var(--wood)} .win.metal{--el:var(--metal)} .win.fire{--el:var(--fire)} .win.water{--el:var(--water)}
-.hd{padding:10px 12px;background:var(--ground-2)} .ttl{font-weight:600} .bd{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
-a{color:var(--water);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1560px;margin:0 auto} h1{font:600 28px/1.1 "IBM Plex Sans","Helvetica Neue",sans-serif;margin:8px 0}
+.sub{color:var(--faint);max-width:90ch;margin:8px 0 16px}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.legend span{border:1px solid currentColor;border-radius:10px;padding:2px 8px}
+.legend .earth{color:var(--earth)} .legend .wood{color:var(--wood)} .legend .metal{color:var(--metal)} .legend .fire{color:var(--fire)} .legend .water{color:var(--water)}
+.stage{overflow-x:auto;padding-bottom:8px}
+.diamond{display:flex;flex-direction:column;align-items:center;gap:8px;width:max-content;margin:0 auto 36px}
+.band{color:var(--faint);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px}
+.row{display:flex;align-items:stretch;gap:10px}
+.n{width:22px;flex:none;display:flex;align-items:center;justify-content:flex-end;color:var(--faint);font-size:10px;font-variant-numeric:tabular-nums}
+.seats{display:flex;gap:8px}
+.seat{display:flex;flex-direction:column;gap:4px;width:118px;min-height:68px;padding:8px 8px 10px;background:var(--card);border:1px solid var(--rule);border-top:2px solid var(--el);border-radius:8px;color:var(--ink);text-decoration:none;font-size:11px;line-height:1.3}
+.seat:hover{border-color:var(--el)}
+.seat .tag{font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--el)}
+.seat.earth{--el:var(--earth)} .seat.wood{--el:var(--wood)} .seat.metal{--el:var(--metal)} .seat.fire{--el:var(--fire)} .seat.water{--el:var(--water)}
 </style></head><body><div class="wrap">
-<div class="sub">SOPHIA · FIVE ROOMS · ${items.length} PAGES</div>
+<div class="sub">SOPHIA · ${shape} · ${items.length} PAGES</div>
 <h1>Sophia</h1>
-<p class="sub">Each page is a five-window pentaptych in the August form. Russian, ternary, geometry, the old counts, and the Sanskrit word svastika. The flag is not drawn. This index is the door.</p>
-<div class="grid">${cols}</div>
+<p class="sub">Each page is a five-window pentaptych in the August form. The door seats them ${shape}. That shape holds sixty, so it is drawn twice. Russian, ternary, geometry, the count, and the Sanskrit word svastika are the five colors. The flag is not drawn. This index is the door.</p>
+<div class="legend"><span class="earth">the Russian</span><span class="wood">the ternary</span><span class="metal">the geometry</span><span class="fire">the count</span><span class="water">the root</span></div>
+<div class="stage">${diamonds}</div>
 </div></body></html>`;
 }
 
