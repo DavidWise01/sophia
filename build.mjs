@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
+import { figureOf, drawArt } from "./art.mjs";
 
 const out = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1"));
 
@@ -276,7 +277,7 @@ function model(spec) {
     ok = Math.abs(phi * phi - phi - 1) < 1e-12;
     lit = "φ² = φ + 1, for φ = (1 + √5) / 2.";
     series = [1, 1, 2, 3, 5, 8, 13, 21];
-    detail = "The identity is algebraic. A drawing of a spiral is not required.";
+    detail = "The identity is algebraic. The water window draws the rectangles.";
   } else if (k === "silver") {
     const s = 1 + Math.sqrt(2);
     rows = rowsFrom([["square side", 1], ["the extra root", 1]]);
@@ -731,7 +732,7 @@ h1 em{font-style:normal;color:var(--fire)}
 .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:stretch}
 @media(max-width:1180px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.grid{grid-template-columns:1fr}}
-.win{background:var(--card);border:1px solid var(--rule);border-radius:9px;overflow:hidden;display:flex;flex-direction:column;min-height:540px;border-top:2px solid var(--el)}
+.win{background:var(--card);border:1px solid var(--rule);border-radius:9px;overflow:hidden;display:flex;flex-direction:column;min-height:620px;border-top:2px solid var(--el)}
 .win.earth{--el:var(--earth)} .win.wood{--el:var(--wood)} .win.metal{--el:var(--metal)} .win.fire{--el:var(--fire)} .win.water{--el:var(--water)}
 .win .hd{padding:10px 12px;border-bottom:1px solid var(--rule);background:var(--ground-2)}
 .win .hd .tag{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--el)}
@@ -831,12 +832,12 @@ h1 em{font-style:normal;color:var(--fire)}
     <div class="win water">
       <div class="hd"><span class="el">water</span><div class="tag">W5 · figure</div><div class="ttl">The figure</div></div>
       <div class="bd">
-        <canvas id="c5" width="260" height="150"></canvas>
-        <div class="txt">${esc(m.detail)}</div>
+        <canvas id="c5" width="260" height="210"></canvas>
+        <div class="txt">${esc(m.detail)} The page draws the subject. Run the series and the figure grows.</div>
         <button class="winrun" id="run5">▸ draw again</button>
         <div class="report">
-          <div class="r"><span>figure</span><b id="p5">${esc(m.water)}</b></div>
-          <div class="r"><span>mark</span><b id="h5">${esc(String(m.waterArg))}</b></div>
+          <div class="r"><span>figure</span><b id="p5">${esc(spec.fig)}</b></div>
+          <div class="r"><span>mark</span><b id="h5">${esc(spec.figArg == null ? "" : typeof spec.figArg === "string" ? spec.figArg : JSON.stringify(spec.figArg))}</b></div>
         </div>
       </div>
     </div>
@@ -845,14 +846,15 @@ h1 em{font-style:normal;color:var(--fire)}
 </div>
 <script>
 (function(){
-var SPEC=${JSON.stringify({ rows: m.rows, series: m.series.length ? m.series : [m.sum], water: m.water, waterArg: m.waterArg, lit: m.lit, sum: m.sum })};
+var SPEC=${JSON.stringify({ rows: m.rows, series: m.series.length ? m.series : [m.sum], water: m.water, waterArg: m.waterArg, lit: m.lit, sum: m.sum, fig: spec.fig, figArg: spec.figArg })};
 var $=function(id){return document.getElementById(id);};
 var step=0;
+var reveal=1;
 var rows=SPEC.rows.map(function(r){return {name:r.name,n:r.n,col:r.col,on:true};});
 function liveSum(){var s=0,k=0;rows.forEach(function(r){if(r.on){s+=r.n;k++;}});return {s:s,k:k};}
 var c3=$("c3"),g3=c3.getContext("2d"),c4=$("c4"),g4=c4.getContext("2d"),c5=$("c5"),g5=c5.getContext("2d");
 var DPR=Math.min(window.devicePixelRatio||1,2);
-function fitAll(){[[c3,g3,160,260],[c4,g4,80,260],[c5,g5,150,260]].forEach(function(o){var w=o[0].clientWidth||260;o[0].width=w*DPR;o[0].height=w*o[2]/o[3]*DPR;o[1].setTransform(DPR,0,0,DPR,0,0);o[0]._w=w;o[0]._h=w*o[2]/o[3];});}
+function fitAll(){[[c3,g3,160,260],[c4,g4,80,260],[c5,g5,210,260]].forEach(function(o){var w=o[0].clientWidth||260;o[0].width=w*DPR;o[0].height=w*o[2]/o[3]*DPR;o[1].setTransform(DPR,0,0,DPR,0,0);o[0]._w=w;o[0]._h=w*o[2]/o[3];});}
 function drawW3(){
   var W=c3._w,H=c3._h,g=g3,s=SPEC.series;g.clearRect(0,0,W,H);g.fillStyle=getComputedStyle(document.body).backgroundColor;g.fillRect(0,0,W,H);
   var min=Math.min.apply(null,s), max=Math.max.apply(null,s); if(max===min){max=min+1;}
@@ -867,38 +869,10 @@ function drawW4(){
   var total=live.reduce(function(a,r){return a+Math.abs(r.n);},0)||1; var x=0;
   live.forEach(function(r){var w=Math.abs(r.n)/total*W;g.fillStyle=r.col;g.fillRect(x,H*0.3,Math.max(0,w-1),H*0.4);x+=w;});
 }
-function drawHooks(g,W,H){
-  g.fillStyle="#c7d0dc"; g.font="10px monospace"; g.textAlign="center"; g.fillText("C4 · four arms · 90°", W/2, 16);
-  var cx=W/2, cy=H/2+6, s=Math.min(W,H)*0.22;
-  for(var i=0;i<4;i++){
-    g.save(); g.translate(cx,cy); g.rotate(i*Math.PI/2); g.strokeStyle="#c7d0dc"; g.lineWidth=3;
-    g.beginPath(); g.moveTo(0,0); g.lineTo(s,0); g.lineTo(s,s*0.55); g.stroke(); g.restore();
-  }
-}
-function drawPoly(g,W,H,n){
-  var cx=W/2, cy=H/2, r=Math.min(W,H)*0.36; g.strokeStyle="#4a8fff"; g.lineWidth=2; g.beginPath();
-  for(var i=0;i<=n;i++){var a=-Math.PI/2+i*2*Math.PI/n; var x=cx+r*Math.cos(a), y=cy+r*Math.sin(a); if(i===0)g.moveTo(x,y); else g.lineTo(x,y);} g.stroke();
-}
-function drawDigits(g,W,H,n){
-  var d=[], x=n;
-  if(n===0) d=[0];
-  while(x!==0){var rem=((x%3)+3)%3; if(rem===2) rem=-1; d.push(rem); x=(x-rem)/3;} 
-  g.fillStyle="#4a8fff"; g.font="12px monospace"; g.textAlign="left"; g.fillText("balanced "+n, 8, 20);
-  d.forEach(function(dig,i){g.fillStyle=dig<0?"#ff6a3d":dig>0?"#4fbf8f":"#c7d0dc"; g.fillText((dig>0?"+":"")+dig+" · 3^"+i, 8, 42+i*16);});
-}
-function drawGrid(g,W,H){
-  var cell=[["2","7","6"],["9","5","1"],["4","3","8"]];
-  var s=Math.min(W,H)*0.22, x0=W/2-1.5*s, y0=H/2-1.5*s;
-  g.font="14px monospace"; g.textAlign="center"; g.textBaseline="middle"; g.fillStyle="#d9a441";
-  for(var r=0;r<3;r++) for(var c=0;c<3;c++){g.strokeStyle="#3a4354"; g.strokeRect(x0+c*s,y0+r*s,s,s); g.fillText(cell[r][c], x0+c*s+s/2, y0+r*s+s/2);} 
-}
+${drawArt.toString()}
 function drawW5(){
   var W=c5._w,H=c5._h,g=g5;g.clearRect(0,0,W,H);
-  if(SPEC.water==="hooks") drawHooks(g,W,H);
-  else if(SPEC.water==="poly") drawPoly(g,W,H,SPEC.waterArg);
-  else if(SPEC.water==="digits") drawDigits(g,W,H,SPEC.waterArg);
-  else if(SPEC.water==="grid") drawGrid(g,W,H);
-  else {g.fillStyle="#4a8fff"; g.font="11px monospace"; g.fillText("parts",8,16); var y=36; rows.forEach(function(r){if(!r.on) return; g.fillStyle=r.col; g.fillRect(8,y,Math.min(W-16, 8+Math.abs(r.n)*4),10); y+=16;});}
+  if(!drawArt(g,W,H,SPEC.fig,SPEC.figArg,reveal)) throw new Error("FIGURE FAIL");
 }
 function update(){
   var live=liveSum();
@@ -920,12 +894,12 @@ function buildRows(){
 }
 function drawAll(){drawW3();drawW4();drawW5();update();}
 var timer=null;
-function runSeries(){if(timer){clearInterval(timer);timer=null;} step=0; drawAll();
-  timer=setInterval(function(){step=Math.min(SPEC.series.length-1, step+1); drawAll(); if(step>=SPEC.series.length-1){clearInterval(timer);timer=null;}},350);}
+function runSeries(){if(timer){clearInterval(timer);timer=null;} step=0; reveal=0; drawAll();
+  timer=setInterval(function(){step=Math.min(SPEC.series.length-1, step+1); reveal=SPEC.series.length<=1?1:step/(SPEC.series.length-1); drawAll(); if(step>=SPEC.series.length-1){clearInterval(timer);timer=null; reveal=1; drawW5();}},350);}
 $("runAll").onclick=runSeries; $("run3").onclick=runSeries;
-$("reset").onclick=function(){if(timer){clearInterval(timer);timer=null;} step=0; rows.forEach(function(r){r.on=true;}); buildRows(); drawAll();};
+$("reset").onclick=function(){if(timer){clearInterval(timer);timer=null;} step=0; reveal=1; rows.forEach(function(r){r.on=true;}); buildRows(); drawAll();};
 $("run4").onclick=function(){drawAll();};
-$("run5").onclick=function(){drawAll();};
+$("run5").onclick=function(){if(timer){clearInterval(timer);timer=null;} reveal=0; drawW5(); var n=0, steps=14; timer=setInterval(function(){n++; reveal=n/steps; drawW5(); if(n>=steps){clearInterval(timer);timer=null; reveal=1; drawW5();}},45);};
 window.addEventListener("resize",function(){fitAll();drawAll();});
 fitAll(); buildRows(); drawAll();
 var again=(${model.toString()})(${JSON.stringify(spec)});
@@ -1023,6 +997,28 @@ function indexHtml(items) {
 
 const specs = pages.map(specOf);
 if (specs.length !== 120) throw new Error("count " + specs.length);
+function mockCtx() {
+  const fn = function () { return proxy; };
+  const proxy = new Proxy({}, { get: function () { return fn; }, set: function () { return true; } });
+  return proxy;
+}
+const knownSlug = {};
+for (const spec of specs) {
+  const fig = figureOf[spec.slug];
+  if (!fig) throw new Error("no figure " + spec.slug);
+  spec.fig = fig[0];
+  spec.figArg = fig[1];
+  knownSlug[spec.slug] = 1;
+  try {
+    if (drawArt(mockCtx(), 260, 210, spec.fig, spec.figArg, 1) !== true) throw new Error("blank");
+    if (drawArt(mockCtx(), 260, 210, spec.fig, spec.figArg, 0.4) !== true) throw new Error("grow");
+  } catch (err) {
+    throw new Error("art " + spec.slug + " " + (err && err.message));
+  }
+}
+for (const slug of Object.keys(figureOf)) {
+  if (!knownSlug[slug]) throw new Error("orphan figure " + slug);
+}
 const seen = {};
 const built = [];
 for (const spec of specs) {
